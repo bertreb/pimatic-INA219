@@ -1,0 +1,43 @@
+{
+  "name": "pimatic-ina219",
+  "description": "Pimatic plugin for the INA219 current and power i2c sensor",
+  "author": {
+    "name": "Bert Gierveld",
+    "email": "gitbertreb@gmail.com",
+    "url": "https://github.com/bertreb"
+  },
+  "main": "pimatic-ina219",
+  "files": [
+    "pimatic-ina219.coffee",
+    "pimatic-ina219-config-schema.coffee",
+    "device-config-schema.coffee",
+    "README.md",
+    "LICENSE",
+    "HISTORY.md"
+  ],
+  "homepage": "https://github.com/bertreb/pimatic-ina219.git",
+  "keywords": [
+    "pimatic",
+    "ina219",
+    "i2c",
+    "sensor",
+    "current",
+    "voltage"
+  ],
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bertreb/pimatic-ina219.git"
+  },
+  "configSchema": "pimatic-ina219-config-schema.coffee",
+  "dependencies": {
+    "ina219": "^0.6.2"
+  },
+  "peerDependencies": {
+    "pimatic": "0.9.*"
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  }
+}
