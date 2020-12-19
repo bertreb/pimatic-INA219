@@ -3,7 +3,7 @@ module.exports = (env) ->
   assert = env.require 'cassert'
   M = env.matcher
   _ = require('lodash')
-  INA219 = require('ina219')
+  ina219 = require('ina219')
 
   class Ina219Plugin extends env.plugins.Plugin
     init: (app, @framework, @config) =>
@@ -14,22 +14,64 @@ module.exports = (env) ->
 
       @framework.deviceManager.registerDeviceClass('Ina219Device', {
         configDef: @deviceConfigDef.Ina219Device,
-        createCallback: (config, lastState) => new Ina219Device(config, lastState)
+        createCallback: (config, lastState) => new Ina219Device(config, lastState, @config.debug)
       })
 
   class Ina219Device extends env.devices.Device
 
-    constructor: (config, lastState) ->
+    attributes:
+      voltage:
+        description: "Voltage"
+        type: "number"
+        unit: 'V'
+        acronym: 'V'
+      current:
+        description: "Current"
+        type: "number"
+        unit: 'mA'
+        acronym: 'A'
+
+    constructor: (config, lastState, logging) ->
       @config = config
       @id = @config.id
       @name = @config.name
 
-      @attributes = {}
+      @interval = @config.interval ? 10000
+      @address = @config.address ? "0x40"
+      @device = @config.device ? "1"
+
+      @_voltage = lastState?.voltage?.value
+      @_current = lastState?.current?.value
+
+      ina219.init(@address, @device)
+      ina219.enableLogging(logging)
+        
+      requestValues = () =>
+        env.logger.debug "Requesting sensor values" 
+        try
+          ina219.getBusVoltage_V((volts) =>
+            env.logger.debug "Voltage (V): " + volts        
+            @emit "voltage", volts
+            ina219.getCurrent_mA((current) =>
+              env.logger.debug "Current (mA): " + current        
+              @emit "current", current
+            )
+          )
+        catch err
+          env.logger.debug "Error getting sensor values: #{err}"
+
+      #ina219.calibrate32V1A(() => # kan ook ina219.calibrate32V2A
+      requestValues()
+      @requestValueIntervalId = setInterval( requestValues, @interval)
+      #)
 
       super()
 
+    getVoltage: -> Promise.resolve(@_voltage)
+    getCurrent: -> Promise.resolve(@_current)
 
     destroy:() =>
+      clearInterval(@requestValueIntervalId)
       super()
 
   ina219Plugin = new Ina219Plugin

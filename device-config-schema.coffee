@@ -5,18 +5,19 @@ module.exports = {
     type: "object"
     extensions: ["xLink", "xAttributeOptions"]
     properties:{
-    properties:
       device:
-        description: "Device file to use"
+        description: "Device file to use (prefix /dev/i2c- is automatically added)"
         type: "string"
-        default: "/dev/i2c-0"
+        default: "1"
       address:
         description: "Address of the sensor"
         type: "string"
+        enum: ["0x40","0x41","0x44","0x45"]
         default: "0x40"
       interval:
         interval: "Sensor read interval in ms"
         type: "integer"
         default: 10000
-  }  }
+    }  
+  }
 }
