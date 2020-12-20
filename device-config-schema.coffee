@@ -7,8 +7,8 @@ module.exports = {
     properties:{
       device:
         description: "Device file to use (prefix /dev/i2c- is automatically added)"
-        type: "string"
-        default: "1"
+        type: "number"
+        default: 1
       address:
         description: "Address of the sensor"
         type: "string"
@@ -18,6 +18,6 @@ module.exports = {
         interval: "Sensor read interval in ms"
         type: "integer"
         default: 10000
-    }  
+    }
   }
 }

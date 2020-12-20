@@ -37,7 +37,7 @@ module.exports = (env) ->
 
       @interval = @config.interval ? 10000
       @address = @config.address ? "0x40"
-      @device = @config.device ? "1"
+      @device = @config.device ? 1
 
       @_voltage = lastState?.voltage?.value
       @_current = lastState?.current?.value
