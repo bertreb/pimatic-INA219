@@ -2,7 +2,6 @@ module.exports = (env) ->
   Promise = env.require 'bluebird'
   assert = env.require 'cassert'
   M = env.matcher
-  _ = require('lodash')
   ina219 = require('ina219')
 
   class Ina219Plugin extends env.plugins.Plugin
@@ -45,15 +44,15 @@ module.exports = (env) ->
 
       ina219.init(@address, @device)
       ina219.enableLogging(logging)
-        
+
       requestValues = () =>
-        env.logger.debug "Requesting sensor values" 
+        env.logger.debug "Requesting sensor values"
         try
           ina219.getBusVoltage_V((volts) =>
-            env.logger.debug "Voltage (V): " + volts        
+            env.logger.debug "Voltage (V): " + volts
             @emit "voltage", volts
             ina219.getCurrent_mA((current) =>
-              env.logger.debug "Current (mA): " + current        
+              env.logger.debug "Current (mA): " + current
               @emit "current", current
             )
           )
