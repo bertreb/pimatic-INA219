@@ -24,14 +24,15 @@
     "current",
     "voltage"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bertreb/pimatic-ina219.git"
   },
   "configSchema": "pimatic-ina219-config-schema.coffee",
   "dependencies": {
-    "ina219": "^0.6.2"
+    "ina219": "^0.6.2",
+    "i2c-bus": "^4.0.10"
   },
   "peerDependencies": {
     "pimatic": "0.9.*"
