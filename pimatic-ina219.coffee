@@ -36,7 +36,7 @@ module.exports = (env) ->
       @name = @config.name
 
       @interval = @config.interval ? 10000
-      @address = @config.address ? "0x40"
+      @address = @config.address ? 0x40
       @device = @config.device ? 1
 
       @_voltage = lastState?.voltage?.value
@@ -48,10 +48,14 @@ module.exports = (env) ->
       requestValues = () =>
         env.logger.debug "Requesting sensor values"
         try
-          ina219.getBusVoltage_V((volts) =>
+          ina219.getBusVoltage_V((_volts) =>
+            volts = _volts
+            if Number.isNaN(_volts) then volts = 0
             env.logger.debug "Voltage (V): " + volts
             @emit "voltage", volts
-            ina219.getCurrent_mA((current) =>
+            ina219.getCurrent_mA((_current) =>
+              current = _current
+              if NUmber.isNaN(_current) then current = 0
               env.logger.debug "Current (mA): " + current
               @emit "current", current
             )
