@@ -63,10 +63,10 @@ module.exports = (env) ->
         catch err
           env.logger.debug "Error getting sensor values: #{err}"
 
-      #ina219.calibrate32V1A(() => # kan ook ina219.calibrate32V2A
-      requestValues()
-      @requestValueIntervalId = setInterval( requestValues, @interval)
-      #)
+      ina219.calibrate32V1A(() => # kan ook ina219.calibrate32V2A
+        requestValues()
+        @requestValueIntervalId = setInterval( requestValues, @interval)
+      )
 
       super()
 
