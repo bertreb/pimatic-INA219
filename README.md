@@ -1,8 +1,8 @@
-# ![](assets/ina219.png)    pimatic-ina219   
+# pimatic-ina219   
 
 Pimatic plugin for the INA219 current and power i2c sensor
 
-This plugin makes an ina219 based device available in Pimatic. The Ina219 device is connected via the I2C port of your computer.
+![](assets/ina219.png)  This plugin makes an ina219 based device available in Pimatic. The Ina219 device is connected via the I2C port of your computer.
 The plugin is tested on a raspberry pi.
 
 The plugin can be installed via the plugins page of Pimatic.
