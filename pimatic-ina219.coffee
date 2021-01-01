@@ -27,7 +27,7 @@ module.exports = (env) ->
       current:
         description: "Current"
         type: "number"
-        unit: 'mA'
+        unit: 'A'
         acronym: 'A'
 
     constructor: (config, lastState, logging) ->
@@ -55,7 +55,7 @@ module.exports = (env) ->
             ina219.getCurrent_mA((_current) =>
               if Number.isNaN(_current) then _current = 0
               env.logger.debug "Current (mA): " + _current
-              @emit "current", _current
+              @emit "current", _current / 1000
             )
           )
         catch err

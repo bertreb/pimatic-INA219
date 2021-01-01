@@ -8,3 +8,5 @@
 	* added calibrate on startup
 * 20200101, v0.0.7
 	* edit in handling state
+* 20200101, v0.0.8
+	* current in A
