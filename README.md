@@ -9,7 +9,7 @@ The plugin can be installed via the plugins page of Pimatic.
 ## Config of the plugin
 ```
 {
-  debug:        "Debug mode. Writes debug messages to the Pimatic log, if set to true."
+  debug: "Debug mode. Writes debug messages to the Pimatic log, if set to true."
 }
 ```
 
@@ -26,8 +26,7 @@ Device configuraton:
  address: "Address of the sensor"
    enum: [0x40,0x41,0x44,0x45]
    default: 0x40
- interval:
-   interval: "Sensor read interval in ms"
+ interval: "Sensor read interval in ms"
    default: 10000
 }
 ```
@@ -43,4 +42,3 @@ The Deebot can be controlled via rules
 This plugin is based on the Ina219 library from [brettmarl](https://github.com/brettmarl/node-ina219#readme).
 
 The minimum node requirement for this plugin is node v8!
-
