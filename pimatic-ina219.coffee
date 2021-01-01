@@ -49,15 +49,13 @@ module.exports = (env) ->
         env.logger.debug "Requesting sensor values"
         try
           ina219.getBusVoltage_V((_volts) =>
-            volts = _volts
-            if Number.isNaN(_volts) then volts = 0
-            env.logger.debug "Voltage (V): " + volts
-            @emit "voltage", volts
+            if Number.isNaN(_volts) then _volts = 0
+            env.logger.debug "Voltage (V): " + _volts
+            @emit "voltage", _volts
             ina219.getCurrent_mA((_current) =>
-              current = _current
-              if NUmber.isNaN(_current) then current = 0
-              env.logger.debug "Current (mA): " + current
-              @emit "current", current
+              if Number.isNaN(_current) then _current = 0
+              env.logger.debug "Current (mA): " + _current
+              @emit "current", _current
             )
           )
         catch err

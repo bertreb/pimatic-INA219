@@ -6,3 +6,5 @@
 	* update package dependency
 * 20201230, v0.0.6
 	* added calibrate on startup
+* 20200101, v0.0.7
+	* edit in handling state
