@@ -35,7 +35,7 @@ The Ina219 provides 2 attributes
 - Voltage (V)
 - Current (A)
 
-The attributes are updated and visible in the Gui every /<interval> milliseconds. The items you can use depend on your type of Deebot.
+The attributes are updated and visible in the Gui every \<interval\> milliseconds. The items you can use depend on your type of Deebot.
 The Deebot can be controlled via rules
 
 
