@@ -13,7 +13,8 @@
     "device-config-schema.coffee",
     "README.md",
     "LICENSE",
-    "HISTORY.md"
+    "HISTORY.md",
+    "assets"
   ],
   "homepage": "https://github.com/bertreb/pimatic-ina219.git",
   "keywords": [
