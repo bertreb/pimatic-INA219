@@ -1,4 +1,4 @@
-# pimatic-ina219   ![](assets/ina219.png)
+# ![](assets/ina219.png)    pimatic-ina219   
 
 Pimatic plugin for the INA219 current and power i2c sensor
 
