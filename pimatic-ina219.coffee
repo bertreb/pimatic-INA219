@@ -38,6 +38,8 @@ module.exports = (env) ->
       @interval = @config.interval ? 10000
       @address = @config.address ? 0x40
       @device = @config.device ? 1
+      @offset = @config.offset ? 0
+      @multiplier = @config.multiplier ? 1
 
       @_voltage = lastState?.voltage?.value
       @_current = lastState?.current?.value
@@ -51,7 +53,7 @@ module.exports = (env) ->
           ina219.getBusVoltage_V((_volts) =>
             if Number.isNaN(_volts) then _volts = 0
             env.logger.debug "Voltage (V): " + _volts
-            @emit "voltage", _volts
+            @emit "voltage", @offset + @multiplier * _volts
             ina219.getCurrent_mA((_current) =>
               if Number.isNaN(_current) then _current = 0
               env.logger.debug "Current (mA): " + _current
