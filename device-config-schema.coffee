@@ -18,6 +18,14 @@ module.exports = {
         interval: "Sensor read interval in ms"
         type: "integer"
         default: 10000
+      multiplier:
+        description: "Multiplier for adjusting input value"
+        type: "number"
+        default: 1
+      offset:
+        description: "Offset for adjusting input value"
+        type: "number"
+        default: 0
     }
   }
 }
